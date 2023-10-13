@@ -1,5 +1,7 @@
 import math
-import random 
+import random
+
+###############################################
 
 def crypt_cesar(m, d):
     nv_m = ""
@@ -40,24 +42,66 @@ def cle_cesar(m, mc):
 
 ###############################################
 
-def crypt_affine(m):
+def crypt_affine(m, cle_a, cle_b):
     nv_m = ""   
-    cle_a= random.randint(1, 100)
-    cle_b = random.randint(1, 100)
-
-    while math.gcd(cle_a, 94) != 1:
-        cle_a = random.randint(1, 100)
 
     for i in m:
         if i != " ":
-            nv_l = ((cle_a * (ord(i) - 32)) + cle_b) % 94
-            nv_m += chr(nv_l + 32)
+            if 65 <= ord(i) <= 90:
+                nv_l = ((ord(i) - 65)*cle_a)+cle_b
+                nv_l %= 26
+                nv_m += chr(nv_l + 65)
+            elif 97 <= ord(i) <= 122:
+                nv_l = ((ord(i) - 97) *cle_a)+cle_b
+                nv_l %= 26
+                nv_m += chr(nv_l+97)
+        
         else:
             nv_m += " "
-
+    print(nv_m)
     return nv_m
 
+def mod_inverse(a, m):
+    for i in range(1, m):
+        if (a * i) % m == 1:
+            return i
+    return None
 
+def decrypt_affine(m, cle_a, cle_b):
+    nv_m = ""
+    inverse_a = mod_inverse(cle_a, 26)
+    print(inverse_a)
+    if inverse_a is not None:
+        for i in m:
+            if i != " ":
+                if 97 <= ord(i) <= 122:
+                    print('minuscules')
+                    nv_l = ((ord(i)-97)-cle_b)*inverse_a 
+                    nv_l %= 26
+                    nv_m += chr(nv_l + 97)
+                elif 65 <= ord(i) <= 90:
+                    print('majuscules')
+                    nv_l = ((ord(i)-65)-cle_b)*inverse_a
+                    nv_l %= 26
+                    nv_m += chr(nv_l + 65)
+            else:
+                nv_m += " "
+        return nv_m
+    else:
+        return "La clé de déchiffrement n'a pas d'inverse modulaire."
+
+
+
+#1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 
+#49, 51, 53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77, 79, 81, 83, 85, 87, 89, 91, 93, 95, 97, 99
+
+print(decrypt_affine(crypt_affine("B b", 17,3), 17, 3)+"\n")
+
+print(decrypt_affine(crypt_affine("QCM Javascript", 71,79), 71, 79)+"\n")
+
+print(decrypt_affine(crypt_affine("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 17,3), 17, 3)+"\n")
+
+print(decrypt_affine(crypt_affine("CODE", 17,3), 17, 3)+"\n")
 ###############################################
 
 def new_dict(m):
@@ -78,3 +122,4 @@ def decrypt_sub(mc, dict):
     return ' '.join(m)  
 
 ###############################################
+
