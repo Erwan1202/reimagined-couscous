@@ -5,26 +5,32 @@
 def crypt_cesar(m, d):
     nv_m = ""
     for i in m:
-        if type(i) == str:
-            if 97 < ord(i) < 122:  # Vérifie si la lettre est minuscule
-                nv_l = (ord(i) - 97 + d) % 26 + 97
-                nv_m += chr(nv_l)
-            elif 65 < ord(i) < 90:  # Vérifie si la lettre est majuscule
-                nv_l = (ord(i) - 65 + d) % 26 + 65
-                nv_m += chr(nv_l)
+        print("i="+i)
+        if i != " ":
+            if 97 <= ord(i) <= 122:  # Vérifie si la lettre est minuscule
+                nv_l = (ord(i) - 97 + d) % 26
+                nv_m += chr(nv_l + 97)
+            elif 65 <= ord(i) <= 90:  # Vérifie si la lettre est majuscule
+                nv_l = (ord(i) - 65 + d) % 26
+                nv_m += chr(nv_l + 65)
+        else:
+            nv_m += " "
+        print(nv_m)
     return nv_m
 
 # Fonction de déchiffrement de César
 def decrypt_cesar(m, d):
     nv_m = ""
     for i in m:
-        if type(i) == str:
-            if 97 < ord(i) < 122:
-                nv_l = (ord(i) - 97 - d) % 26 + 97
-                nv_m += chr(nv_l)
-            elif 65 < ord(i) < 90:
-                nv_l = (ord(i) - 65 - d) % 26 + 65
-                nv_m += chr(nv_l)
+        if i != " ":
+            if 97 <= ord(i) <= 122:
+                nv_l = (ord(i) - 97 - d) % 26
+                nv_m += chr(nv_l + 97)
+            elif 65 <= ord(i) <= 90:
+                nv_l = (ord(i) - 65 - d) % 26
+                nv_m += chr(nv_l + 65)
+        else:
+            nv_m += " "
     return nv_m
 
 # Fonction pour trouver la clé de César
