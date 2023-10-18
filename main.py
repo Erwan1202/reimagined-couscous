@@ -11,7 +11,8 @@ def main():
         print("6. Déchiffrement par substitution")
         print("7. Chiffrement en binaire")
         print("8. Déchiffrement en binaire")
-        print("9. Quitter")
+        print("9. Trouver la clé de César")
+        print("10. Quitter")
 
         choix = input("Entrez le numéro de l'option : ")
 
@@ -43,14 +44,12 @@ def main():
 
         elif choix == "5":
             message = input("Entrez le message à chiffrer : ")
-            dictionnaire = new_dict(message.split())
-            message_chiffre = crypt_sub(message, dictionnaire)
+            message_chiffre = crypt_sub(message)
             print("Message chiffré : ", message_chiffre)
 
         elif choix == "6":
             message_chiffre = input("Entrez le message chiffré : ")
-            dictionnaire = new_dict(message_chiffre.split())
-            message_dechiffre = decrypt_sub(message_chiffre, dictionnaire)
+            message_dechiffre = decrypt_sub(message_chiffre)
             print("Message déchiffré : ", message_dechiffre)
 
         elif choix == "7":
@@ -64,6 +63,15 @@ def main():
             print("Message déchiffré : ", message_dechiffre)
 
         elif choix == "9":
+            message = input("Entrez le message chiffré : ")
+            mot_cle = input("Entre le message d'origine : ")
+            cle = cle_cesar(mot_cle, message)
+            if cle is not None:
+                print(f"Clé de chiffrement de César trouvée : {cle}")
+            else:
+                print("La clé de chiffrement de César n'a pas été trouvée.")
+
+        elif choix == "10":
             print("Au revoir !")
             break
 
