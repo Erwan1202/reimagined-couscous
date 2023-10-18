@@ -90,23 +90,37 @@ def decrypt_affine(m, cle_a, cle_b):
 ###############################################
 
 # Fonction pour créer un dictionnaire
-def new_dict(m):
+def new_dict():
+    n = int(input("Entrez la taille de votre dictionnaire: "))
     dict = {}
-    for i, mot in enumerate(m):
-        dict[mot] = i
+    for i in range(1,n+1):
+        m = input("Entrez le "+ str(i)+ " mot: ")
+        dict[i] = m
+    print(dict)
     return dict
 
+
 # Fonction de chiffrement par substitution
-def crypt_sub(m, dict):
+def crypt_sub(m):
+    nv_m =""
+    dico = new_dict()
     mots = m.split()
-    texte_chiffre = [str(dict.get(mot, -1)) for mot in mots]
-    return ' '.join(texte_chiffre)
+    for i in mots:
+        for k, val in dico.items():
+            if i == val:
+                nv_m += str(k) + " "
+    return nv_m
 
 # Fonction de déchiffrement par substitution
-def decrypt_sub(mc, dict):
+def decrypt_sub(mc):
+    nv_m =""
+    dico = new_dict()
     indices = mc.split()
-    m = [list(dict.keys())[list(dict.values()).index(int(idx))] for idx in indices]
-    return ' '.join(m)
+    for i in indices:
+        for k, val in dico.keys():
+            if i == val:
+                nv_m += k + " "
+    return nv_m 
 
 ###############################################
 
