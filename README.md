@@ -5,7 +5,9 @@ Ce projet Python propose un ensemble de fonctions pour chiffrer et déchiffrer d
 
         Table des matières:
 1.Introduction
+
 2.Fonctionnalités
+
 3.Comment utiliser
 
 
