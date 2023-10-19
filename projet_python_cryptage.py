@@ -37,7 +37,6 @@ def cle_cesar(m, mc):
     m = m.lower()
     for i in range(26):
         nv_m = decrypt_cesar(mc, i)
-        print(str(i) +": "+str(nv_m))
         if m == nv_m.lower():
             return i
     return None

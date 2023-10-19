@@ -72,7 +72,7 @@ def main():
                 print("La clé de chiffrement de César n'a pas été trouvée.")
 
         elif choix == "10":
-            print("Au revoir !")
+            print("Au revoir <3")
             break
 
         else:
