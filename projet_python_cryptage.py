@@ -96,7 +96,6 @@ def new_dict():
     for i in range(1,n+1):
         m = input("Entrez le "+ str(i)+ " mot: ")
         dict[i] = m
-    print(dict)
     return dict
 
 
