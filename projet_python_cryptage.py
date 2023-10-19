@@ -34,9 +34,11 @@ def decrypt_cesar(m, d):
 # Fonction pour trouver la clé de César
 def cle_cesar(m, mc):
     mc = mc.lower()
+    m = m.lower()
     for i in range(26):
-        nv_m = decrypt_cesar(m, i)
-        if mc in nv_m.lower():
+        nv_m = decrypt_cesar(mc, i)
+        print(str(i) +": "+str(nv_m))
+        if m == nv_m.lower():
             return i
     return None
 
@@ -121,7 +123,6 @@ def decrypt_sub(mc):
     return nv_m 
 
 
-print(decrypt_sub("1 2 3 4 3"))
 ###############################################
 
 # Fonction de chiffrement binaire
@@ -143,7 +144,8 @@ def decrypt_binaire(m):
     def binaire_en_lettre(b):
         l = chr(int(b, 2))
         return l
-
+    
+    m += " 10"
     nv_m = ""
     binaire_temp = ""
 
