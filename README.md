@@ -44,7 +44,7 @@ Trouvé la clé utilisée pour chiffrer un message en utilisant la chiffrement C
 
 
 
-        Explications dees fonctions:
+        Explications des fonctions:
 
 Les fonctions `crypt_cesar`, `decrypt_cesar`, et `cle_cesar` sont des fonctions qui implémentent l'algorithme de chiffrement de César. L'algorithme de chiffrement de César est une méthode de chiffrement par substitution monoalphabétique qui consiste à remplacer chaque lettre d'un texte clair par une lettre à distance fixe, toujours du même côté, dans l'ordre alphabétique. La distance fixe est appelée la clé de chiffrement. La fonction `crypt_cesar` prend en entrée un message clair `m` et une clé de chiffrement `d`, et renvoie le message chiffré correspondant. La fonction `decrypt_cesar` prend en entrée un message chiffré `m` et une clé de déchiffrement `d`, et renvoie le message déchiffré correspondant. La fonction `cle_cesar` prend en entrée un message clair `m` et un mot-clé `mc`, et renvoie la clé de chiffrement correspondante.
 

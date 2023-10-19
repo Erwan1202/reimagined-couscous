@@ -5,7 +5,6 @@
 def crypt_cesar(m, d):
     nv_m = ""
     for i in m:
-        print("i="+i)
         if i != " ":
             if 97 <= ord(i) <= 122:  # Vérifie si la lettre est minuscule
                 nv_l = (ord(i) - 97 + d) % 26
@@ -15,7 +14,6 @@ def crypt_cesar(m, d):
                 nv_m += chr(nv_l + 65)
         else:
             nv_m += " "
-        print(nv_m)
     return nv_m
 
 # Fonction de déchiffrement de César
@@ -116,11 +114,14 @@ def decrypt_sub(mc):
     dico = new_dict()
     indices = mc.split()
     for i in indices:
-        for k, val in dico.keys():
-            if i == val:
-                nv_m += k + " "
+        for k in dico.keys():
+            if i == k:
+                print(k)
+                nv_m += str(dico[k]) + " "
     return nv_m 
 
+
+print(decrypt_sub("1 2 3 4 3"))
 ###############################################
 
 # Fonction de chiffrement binaire
